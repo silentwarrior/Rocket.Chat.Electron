@@ -1,0 +1,98 @@
+/* Override the left side panels width */
+.side-nav, .flex-nav{
+    width: 220px !important;
+}
+.main-content {
+    left: 220px !important;
+}
+nav.options{
+    width: 220px !important;
+}
+
+/* the username next to the picture at the top left */
+.account-box h4, .side-nav h3{
+    color: #AB9BA9 !important;
+}
+/* the + icons */
+.add-room, .history-div, .more-channels{
+    background-color: transparent !important;
+    color: #AB9BA9 !important;
+}
+/* the icons for channels (#), private groups (lock) and its names */
+.side-nav .icon-hash, .side-nav .icon-lock, .side-nav a, .side-nav i {
+    color: #AB9BA9 !important;
+}
+.account-box .options a{
+    border-bottom: none !important;
+    color: #AB9BA9 !important;
+}
+.account-box .options a:hover {
+    background-color: #4D394B !important;
+    color: #AB9BA9 !important;
+}
+/* name of the person/channel/group */
+.rooms-list .has-alert .name{
+    color: white !important;
+    font-weight: bolder !important;
+}
+/* the red !! sign signaling there is messages */
+.rooms-list .has-alert .name:after{
+    content: "!!";
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: larger;
+    color: #ff5568;
+}
+/* overriding the icon colors*/
+.rooms-list .opt i{
+    color: #ff5568 !important;
+}
+/* and its position when has alert to avoid overlap */
+.rooms-list .has-alert .opt{
+    margin-right: 20px !important;
+}
+
+/* overall background of all elements on the left side bar */
+.account-box .info, .side-nav .header, .side-nav .footer, .rooms-list,
+.flex-nav header, .side-nav footer, .flex-nav .content, .side-nav .options{
+    background-color: #4D394B !important;
+}
+.flex-nav, .flex-nav .input-line label{
+    color: #AB9BA9 !important;
+}
+
+/* the normally hidden panels to the left and right side that open up */
+.flex-tab, .flex-tab .control{
+    background-color: white !important;
+}
+
+/* just some buttons in those panels */
+.flex-tab .button{
+    border-radius: 10% !important;
+}
+.flex-tab .button.primary{
+    border: 1px solid white;
+}
+.flex-tab .button.secondary{
+    border: 1px solid #e3e3e3;
+}
+
+/* Chat box area, upload box, text box and mic box */
+.messages-container .message-form>div>.file {
+    height: 45px !important;
+    border: 2px solid #e3e3e3 !important;
+    border-right: 0px solid grey !important;
+    padding-top: 9px !important;
+}
+.messages-container .message-form textarea {
+    height: 45px !important;
+    border: 2px solid #e3e3e3 !important;
+    padding-top: 12px !important;
+}
+.messages-container .message-form .show-mic{
+    margin-top: 5px !important;
+}
+
+
+

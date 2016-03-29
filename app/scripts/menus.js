@@ -13,6 +13,27 @@ var template;
 
 document.title = APP_NAME;
 
+var changeCSS = function(){
+    const activeWebview = webview.getActive();
+    if (activeWebview) {
+        var fs = require('fs');
+         fs.readFile('./resources/app.asar/stylesheets/overrides.css',"utf-8", function(err, data) {
+            data = ""+data;
+             if (data && !err) {
+                    console.log('reloading css');
+                    activeWebview.insertCSS(data);
+             }else{
+                 console.error(err);
+             }
+         });
+    }
+}
+// brute force the shit out of it lol
+var interval = setInterval(changeCSS, 1000);
+setTimeout(function(){
+    clearInterval(interval);
+}, 3*60*1000);
+
 if (process.platform === 'darwin') {
 	template = [
 		{
@@ -160,9 +181,29 @@ if (process.platform === 'darwin') {
 					type: 'separator'
 				},
 				{
-					label: 'Toggle server list',
+					label: 'Toggle server list2',
 					click: function() {
 						sidebar.toggle();
+					}
+				},
+				{
+					type: 'separator'
+				},
+				{
+					label: 'Reload CSS',
+					click: function() {
+					    const activeWebview = webview.getActive();
+                    	if (activeWebview) {
+                    	    var fs = require('fs');
+                            fs.readFile('./stylesheets/overrides.css', function(err, data) {
+                                if (data && !err) {
+                                    console.log('has data and no error!');
+                                    activeWebview.insertCSS("");
+                                }else{
+                                    console.error(err);
+                                }
+                            });
+                    	}
 					}
 				}
 			]
@@ -373,7 +414,68 @@ if (process.platform === 'darwin') {
 					click: function() {
 						sidebar.toggle();
 					}
-				}
+				},{
+                 					type: 'separator'
+                 				},
+                 				{
+                 					label: 'Reload CSS',
+                 					click: function() {
+                 					    const activeWebview = webview.getActive();
+                                     	if (activeWebview) {
+                                     	    var fs = require('fs');
+                                             fs.readFile('./app/stylesheets/overrides.css',"utf-8", function(err, data) {
+                                                data = ""+data;
+                                                 if (data && !err) {
+                                                     console.log('has data and no error!');
+                                                                                    console.log(data);
+                                                     activeWebview.insertCSS(data);
+                                                 }else{
+                                                     console.error(err);
+                                                 }
+                                             });
+                                     	}
+                 					}
+                 				},
+                 				{
+                                                 					label: 'Reload CSS Loop',
+                                                 					click: function() {
+                                                 					    const activeWebview = webview.getActive();
+                                                                     	if (activeWebview) {
+                                                                     	    var fs = require('fs');
+                                                                                     setInterval(function(){
+                                                                             fs.readFile('./app/stylesheets/overrides.css',"utf-8", function(err, data) {
+                                                                                data = ""+data;
+                                                                                 if (data && !err) {
+                                                                                        console.log('reloading css');
+                                                                                        activeWebview.insertCSS(data);
+                                                                                 }else{
+                                                                                     console.error(err);
+                                                                                 }
+                                                                             });
+
+                                                                                     }, 500);
+                                                                     	}
+                                                 					}
+                                                 				},
+                 				{
+                                                 					label: 'Reload JS',
+                                                 					click: function() {
+                                                 					    const activeWebview = webview.getActive();
+                                                                     	if (activeWebview) {
+                                                                     	    var fs = require('fs');
+                                                                             fs.readFile('./app/scripts/overrides.js',"utf-8", function(err, data) {
+                                                                                 if (data && !err) {
+                                                                                    console.log(data);
+                                                                                     console.log('has data and no error!');
+                                                                                     activeWebview.executeJavaScript(data);
+                                                                                 }else{
+                                                                                    console.log(data);
+                                                                                     console.error(err);
+                                                                                 }
+                                                                             });
+                                                                     	}
+                                                 					}
+                                                 				}
 			]
 		},
 		{
